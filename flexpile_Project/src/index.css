@@ -1,0 +1,66 @@
+/* index.css */
+.board-container {
+    box-sizing: border-box;
+    height: 500px;
+    width: 70%;
+    background-color: #dcb83e;
+    margin: auto;
+    position: relative;
+    /* overflow: auto; */
+}
+
+.board-header {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.add-note-btn {
+    position: absolute;
+    right: 5%;
+    top: 10px;
+    cursor: pointer;
+}
+
+.note-container {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    max-width: 35%;
+   
+}
+
+.note {
+    background-color: #ffff3b;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    word-wrap: break-word;
+    position: relative;
+    width: 100%;
+    
+}
+
+.delete-btn {
+    position: absolute;
+    top: 0;
+    right: 4%;
+    background-color: tomato;
+}
+
+.delete-btn:hover {
+    background-color: crimson;
+}
+
+
+.edit-btn {
+position: relative;
+    bottom: 0;
+    right: 0;
+    background-color: rgb(126, 126, 126);
+    border-radius: 5px;
+}
+.edit-btn>button:hover{
+    background-color: black;
+    color: white;
+}
+
