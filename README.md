@@ -1,8 +1,9 @@
 # Flexpile_Frontend
 
 <h1>Interactive Board with React</h1>
-
+<h2>Notice Board</h2>
 <img src="https://github.com/Shahid0143/Flexpile_Frontend/assets/112757232/e73eee49-5177-4542-8be7-9272ee6f25b7"/>
+<h2>Drag Down of Note within the board</h2>
 <img src="https://github.com/Shahid0143/Flexpile_Frontend/assets/112757232/9149a7df-effe-4fa2-8096-17d757291031"/>
 
 <h1>Overview</h1>
