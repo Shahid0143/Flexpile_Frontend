@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import { SiPinboard } from "react-icons/si";
-import { RiPushpin2Fill, RiPushpin2Line } from "react-icons/ri"; // icon for unpinning
+import { RiPushpin2Fill, RiPushpin2Line } from "react-icons/ri";
 import "../index.css";
 
 function Board() {
+  
   const [notes, setNotes] = useState([]);
   const [editableNoteId, setEditableNoteId] = useState(null);
   const [showAddNotePopup, setShowAddNotePopup] = useState(false);
   const [noteInput1, setNoteInput1] = useState("");
-  const [noteInput2, setNoteInput2] = useState("");
-  
+
+  // Constants for note dimensions
   const noteWidth = 150;
   const noteHeight = 160;
 
@@ -19,17 +20,17 @@ function Board() {
     setShowAddNotePopup(true);
   };
 
+  // Function to cancel adding a new note
   const handleCancelAddNote = () => {
     setShowAddNotePopup(false);
     setNoteInput1("");
-    setNoteInput2("");
-    setNoteInput3("");
   };
 
+  // Function to add a new note
   const handlePostNote = () => {
     const newNote = {
       id: Date.now(),
-      text: `${noteInput1}  ${noteInput2}`, // Combining inputs into one text
+      text: `${noteInput1} `,
       x: 0,
       y: 0,
       zIndex: notes.length + 1,
@@ -38,58 +39,52 @@ function Board() {
     setNotes([...notes, newNote]);
     setShowAddNotePopup(false);
     setNoteInput1("");
-    setNoteInput2("");
-   
   };
 
-
-  // Delete a note from the board
+  // Function to delete a note from the board
   const handleDelete = (id) => {
-    const updatedNotes = notes.filter((note) => note.id !== id);
-    setNotes(updatedNotes);
+    const updatedNotes = notes.filter((note) => note.id !== id)
+    setNotes(updatedNotes)
   };
 
-  // Edit a note on the board
+  // Function to initiate editing a note
   const handleEdit = (id) => {
-    setEditableNoteId(id);
+    setEditableNoteId(id)
   };
 
-  // Change the text content of a note
+  // Function to change the text content of a note
   const handleNoteChange = (e, id) => {
     const updatedNotes = notes.map((note) =>
       note.id === id ? { ...note, text: e.target.value } : note
     );
-    setNotes(updatedNotes);
+    setNotes(updatedNotes)
   };
 
-  // Start dragging a note
-
+  // Function to start dragging a note
   const handleDragStart = (e, id) => {
     if (!notes.find((note) => note.id === id).pinned) {
       e.dataTransfer.setData("noteId", id);
       const draggedNoteIndex = notes.findIndex((note) => note.id === id);
       const draggedNote = { ...notes[draggedNoteIndex] };
-      draggedNote.zIndex = notes.length + 1; // Bring the dragged note to the top
+      draggedNote.zIndex = notes.length + 1;
       const updatedNotes = [...notes];
       updatedNotes[draggedNoteIndex] = draggedNote;
       setNotes(updatedNotes);
     }
   };
 
-  // Drop a note onto the board
-
+  // Function to drop a note onto the board
   const handleDrop = (e) => {
     e.preventDefault();
     const droppedNoteId = e.dataTransfer.getData("noteId");
     const droppedNoteIndex = notes.findIndex(
       (note) => note.id.toString() === droppedNoteId
     );
-    const droppedNote = { ...notes[droppedNoteIndex] };
-    const rect = e.currentTarget.getBoundingClientRect();
-    let x = e.clientX - rect.left - noteWidth / 2;
-    let y = e.clientY - rect.top - noteHeight / 2;
+    const droppedNote = { ...notes[droppedNoteIndex] }
+    const rect = e.currentTarget.getBoundingClientRect()
+    let x = e.clientX - rect.left - noteWidth / 2
+    let y = e.clientY - rect.top - noteHeight / 2
 
-    // Calculate the distance from the edges of the board
     x = Math.max(x, 0);
     y = Math.max(y, 0);
     x = Math.min(x, rect.width - noteWidth);
@@ -97,13 +92,13 @@ function Board() {
 
     droppedNote.x = x;
     droppedNote.y = y;
-    droppedNote.zIndex = notes.length; // Set zIndex for the dropped note
+    droppedNote.zIndex = notes.length;
     const updatedNotes = [...notes];
     updatedNotes[droppedNoteIndex] = droppedNote;
     setNotes(updatedNotes);
   };
 
-  // Pin or unpin a note
+  // Function to pin or unpin a note
   const handlePinNote = (id) => {
     const updatedNotes = notes.map((note) =>
       note.id === id ? { ...note, pinned: !note.pinned } : note
@@ -140,14 +135,6 @@ function Board() {
                 onChange={(e) => setNoteInput1(e.target.value)}
                 className="input-style"
               />
-              <input
-                type="text"
-                placeholder="Enter text 2"
-                value={noteInput2}
-                onChange={(e) => setNoteInput2(e.target.value)}
-                className="input-style"
-              />
-
               <button onClick={handlePostNote}>Post Note</button>
               <button onClick={handleCancelAddNote}>Cancel</button>
             </div>
@@ -191,8 +178,6 @@ function Board() {
               ) : (
                 <>
                   <p onClick={() => handleEdit(note.id)}>{note.text}</p>
-                  <p onClick={() => handleEdit(note.id)}>{note.text}</p>
-                  <p onClick={() => handleEdit(note.id)}>{note.text}</p>
                 </>
               )}
 
@@ -218,7 +203,7 @@ function Board() {
         </div>
       </div>
     </>
-  );
+  )
 }
+export default Board
 
-export default Board;
