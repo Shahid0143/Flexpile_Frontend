@@ -26,44 +26,56 @@
     /* top: 50px; */
     /* left: 50px; */
     max-width: 35%;
+    
+   
    
 }
 
 .note {
+    position: absolute;
+    width: 200px;
+    height: 180px;
+    padding: 12px;
+    margin: 8px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #ffff3b;
-    /* padding: 5px;
-    margin: 5px; */
-    border-radius: 5px;
-    /* word-wrap: break-word; */
-    position: relative;
-    /* width: 100%; */
-    
+    transition: transform 0.3s ease;
+}
+
+.note p {
+    margin-bottom: 4px;
+   
+}
+
+.note input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 8px;
 }
 
 .delete-btn {
     position: absolute;
     top: 0;
     right: 4%;
-    background-color: tomato;
+    
 }
 
-.delete-btn:hover {
-    background-color: crimson;
-}
 
 
 .edit-btn {
 position: relative;
-    bottom: 0;
+    bottom: -18px;
     right: 0;
-    background-color: rgb(126, 126, 126);
+background-color: rgba(0, 0, 0, 0.5);
     border-radius: 5px;
 }
-.edit-btn>button:hover{
-    background-color: black;
+
+.edit-btn button:hover{
     color: white;
 }
-
 
 .add-note-popup {
     position: fixed;
@@ -85,3 +97,18 @@ background-color: rgba(0, 0, 0, 0.5);
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
+
+.note .delete-btn,
+.note .edit-btn button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+
+.note .edit-btn button {
+    margin-right: 8px;
+}
+

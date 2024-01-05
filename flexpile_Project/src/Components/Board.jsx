@@ -147,7 +147,7 @@ function Board() {
                 onChange={(e) => setNoteInput2(e.target.value)}
                 className="input-style"
               />
-             
+
               <button onClick={handlePostNote}>Post Note</button>
               <button onClick={handleCancelAddNote}>Cancel</button>
             </div>
@@ -192,7 +192,7 @@ function Board() {
                 <>
                   <p onClick={() => handleEdit(note.id)}>{note.text}</p>
                   <p onClick={() => handleEdit(note.id)}>{note.text}</p>
-                 
+                  <p onClick={() => handleEdit(note.id)}>{note.text}</p>
                 </>
               )}
 
